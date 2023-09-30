@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const EndCTA = () => {
   const navigate = useNavigate();
   return (
-    <section className="border-[1px] flex justify-between items-start border-slate-800 px-6 py-6 rounded-lg mt-12">
+    <section className="border-[1px] flex flex-col lg:flex-row justify-between items-start border-slate-800 px-6 py-6 rounded-lg mt-12">
       <div>
         <h6 className="text-slate-300 mb-2 text-[18px] font-bold">
           Thanks for Exploring Pokémon with Us!
@@ -17,7 +17,7 @@ const EndCTA = () => {
       </div>
       <button
         onClick={() => navigate('/')}
-        className="bg-rose-700 text-slate-100 px-4 py-2 rounded-lg"
+        className="bg-rose-700 mt-5 lg:mt-0 text-slate-100 px-4 py-2 rounded-lg"
       >
         Explore Other Pokemons
       </button>

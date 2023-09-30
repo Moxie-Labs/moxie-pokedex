@@ -94,7 +94,9 @@ const PokemonCard = ({ pokemon }) => {
         {pokemon.species.flavor_text_entries[0].flavor_text}
       </p>
       <div className="border-t-[1px] grid grid-cols-3 border-b-[1px] border-slate-700 py-3 mt-4">
-        <p className="capitalize">{pokemon.details.moves[0].move.name}</p>
+        <p className="capitalize text-blue-500">
+          {pokemon.details.moves[0].move.name}
+        </p>
         <p className="capitalize text-lime-500">
           {pokemon.details.stats[1].base_stat}
         </p>
@@ -102,7 +104,7 @@ const PokemonCard = ({ pokemon }) => {
           {pokemon.details.stats[2].base_stat}
         </p>
       </div>
-      <div className="grid grid-cols-3 text-[12px]  py-3">
+      <div className="grid grid-cols-3 text-[12px] text-slate-200 py-3">
         <p className="capitalize">Move</p>
         <p className="capitalize">Attack</p>
         <p className="capitalize">Defense</p>

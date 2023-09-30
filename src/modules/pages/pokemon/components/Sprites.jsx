@@ -17,7 +17,7 @@ const Sprites = ({ pokemon, pokemonData }) => {
   return (
     <section className="mt-10">
       <h2 className="text-slate-100 text-[16px] font-medium">Sprites</h2>
-      <div className="py-10 border-[1px] px-12 text-slate-100 mt-4 grid grid-cols-4 items-center rounded-lg border-slate-700">
+      <div className="py-10 border-[1px] px-12 text-slate-100 mt-4 grid lg:grid-cols-4 items-center rounded-lg border-slate-700">
         {generateSprite(
           pokemon,
           pokemonData?.data.sprites.other.dream_world?.front_default,

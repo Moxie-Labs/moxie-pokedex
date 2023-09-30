@@ -11,13 +11,15 @@ import Sprites from './components/Sprites';
 const BackButton = () => {
   const navigate = useNavigate();
   return (
-    <button
-      onClick={() => navigate('/')}
-      className="bg-rose-700 inline-flex items-center absolute right-0 top-10 text-slate-100 px-4 py-2 rounded-lg"
-    >
-      <Icon icon="ion:chevron-back-sharp" className="text-[20px] mr-4" />
-      Back to Homepage
-    </button>
+    <div className="flex items-end justify-end mb-5">
+      <button
+        onClick={() => navigate('/')}
+        className="bg-rose-700 inline-flex items-center text-slate-100 px-4 py-2 rounded-lg"
+      >
+        <Icon icon="ion:chevron-back-sharp" className="text-[20px] mr-4" />
+        Back to Homepage
+      </button>
+    </div>
   );
 };
 

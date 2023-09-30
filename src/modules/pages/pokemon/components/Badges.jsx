@@ -18,7 +18,7 @@ const Badges = ({ pokemonData }) => {
   return (
     <section className="mt-10">
       <h2 className="text-slate-100 text-[16px] font-medium">Species Stat</h2>
-      <div className="mt-4 grid grid-cols-4 gap-4 w-[100%] mx-auto">
+      <div className="mt-4 grid lg:grid-cols-4 gap-4 w-[100%] mx-auto">
         <Bagde
           icon={'system-uicons:face-happy'}
           label="Base happiness"

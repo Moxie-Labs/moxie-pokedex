@@ -58,10 +58,10 @@ const Home = () => {
   return (
     <MainLayout>
       <header className="pb-10 border-b-[1px] border-slate-700">
-        <h1 className="text-4xl text-slate-100 font-bold w-[60%]">
+        <h1 className="text-[32px] lg:text-4xl text-slate-100 font-bold lg:w-[50%]">
           Explore the Hidden Secrets of Your Favorite Pokémon
         </h1>
-        <p className="text-[16px] text-slate-400 font-regular w-[60%] mt-4">
+        <p className="text-[16px] text-slate-400 font-regular lg:w-[60%] mt-4">
           Click on your favorite Pokémon to uncover their hidden secrets, unique
           abilities, and captivating backstories. Let's embark on this friendly
           adventure together!

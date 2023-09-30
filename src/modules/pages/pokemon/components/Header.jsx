@@ -10,13 +10,13 @@ const Header = ({ pokemonData }) => {
     { label: 'Special Defense', width: pokemonData?.data.stats[4].base_stat }
   ];
   return (
-    <header className="py-10 border-[1px] px-12 text-slate-100 flex justify-between items-center rounded-lg border-slate-700">
+    <header className="py-10 border-[1px] px-4 lg:px-12 text-slate-100 flex flex-col lg:flex-row justify-between items-center rounded-lg border-slate-700">
       <img
         className="px-4 py-6 h-[400px]"
         alt={pokemonData?.name}
         src={pokemonData?.data.sprites.other.dream_world.front_default}
       ></img>
-      <div className="w-[60%]">
+      <div className="lg:w-[60%]">
         <h1 className="text-[46px] font-black bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-yellow-100 capitalize">
           {pokemonData?.data.name}
         </h1>
