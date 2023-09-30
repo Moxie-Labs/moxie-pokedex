@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Sprite = ({ src, alt, label }) => {
+  if (!src) return;
   return (
     <div className="flex flex-col items-center justify-center">
       <img className="px-4 py-6 h-[200px]" alt={alt} src={src}></img>
