@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 const MainLayout = ({ children }) => {
   const location = useLocation();
   return (
-    <main className="py-[100px] w-[95%] lg:w-[95%] mx-auto opverflow-clip">
+    <main className="py-[100px] relative w-[95%] lg:w-[95%] mx-auto opverflow-clip">
       <>{children}</>
     </main>
   );

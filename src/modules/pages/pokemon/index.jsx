@@ -1,12 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import MainLayout from '../../layout/MainLayout';
 import { Icon } from '@iconify/react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import MovesTable from './components/MovesTable';
 import EndCTA from './components/EndCTA';
 import Badges from './components/Badges';
 import Header from './components/Header';
 import Sprites from './components/Sprites';
+
+const BackButton = () => {
+  const navigate = useNavigate();
+  return (
+    <button
+      onClick={() => navigate('/')}
+      className="bg-rose-700 inline-flex items-center absolute right-0 top-10 text-slate-100 px-4 py-2 rounded-lg"
+    >
+      <Icon icon="ion:chevron-back-sharp" className="text-[20px] mr-4" />
+      Back to Homepage
+    </button>
+  );
+};
 
 const Pokemon = () => {
   const [pokemonData, setPokemonData] = useState(null);
@@ -48,22 +61,22 @@ const Pokemon = () => {
     fetchData();
   }, []);
 
+  if (!pokemonData)
+    return (
+      <Icon
+        icon="line-md:loading-twotone-loop"
+        className="mx-auto text-rose-500"
+      />
+    );
+
   return (
     <MainLayout>
-      {pokemonData ? (
-        <>
-          <Header pokemonData={pokemonData} />
-          <Badges pokemonData={pokemonData} />
-          <Sprites pokemon={pokemon} pokemonData={pokemonData} />
-          <MovesTable pokemonData={pokemonData} />
-          <EndCTA />
-        </>
-      ) : (
-        <Icon
-          icon="line-md:loading-twotone-loop"
-          className="mx-auto text-rose-500"
-        />
-      )}
+      <BackButton />
+      <Header pokemonData={pokemonData} />
+      <Badges pokemonData={pokemonData} />
+      <Sprites pokemon={pokemon} pokemonData={pokemonData} />
+      <MovesTable pokemonData={pokemonData} />
+      <EndCTA />
     </MainLayout>
   );
 };
