@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 const Home = React.lazy(() => import('../modules/pages/home'));
+const Pokemon = React.lazy(() => import('../modules/pages/pokemon'));
 
 const home = {
   path: '/',
@@ -12,4 +13,13 @@ const home = {
   route: Route
 };
 
-export const appRoutes = [home];
+const pokemon = {
+  path: '/:pokemon',
+  exact: true,
+  name: 'Pokemon Details component',
+  component: <Pokemon />,
+  roles: ['User'],
+  route: Route
+};
+
+export const appRoutes = [home, pokemon];

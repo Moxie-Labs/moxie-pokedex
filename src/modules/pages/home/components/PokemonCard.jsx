@@ -1,5 +1,6 @@
 import { Icon } from '@iconify/react';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const getTypeIcon = (typeName) => {
   switch (typeName) {
@@ -45,8 +46,12 @@ const getTypeIcon = (typeName) => {
 };
 
 const PokemonCard = ({ pokemon }) => {
+  const navigate = useNavigate();
   return (
-    <li className="bg-slate-800 rounded-lg px-4 py-3 hover:bg-rose-500 hover:bg-opacity-10 cursor-pointer">
+    <li
+      onClick={() => navigate(`/${pokemon.name}`)}
+      className="bg-slate-800 rounded-lg px-4 py-3 hover:bg-rose-500 hover:bg-opacity-10 cursor-pointer"
+    >
       <p className="pb-[4px] font-medium text-[12px]">
         Evolves from
         <span className="ml-1 text-rose-500">{pokemon?.details?.name}</span>
@@ -65,6 +70,7 @@ const PokemonCard = ({ pokemon }) => {
       </div>
       <img
         className="w-[100%] px-4 py-6 h-[300px]"
+        alt="Pokemon Image"
         src={pokemon?.details?.sprites.other.dream_world.front_default}
       ></img>
       <div className="border-slate-700 border-[1px] text-[14px] rounded-lg font-medium px-4 py-2 flex items-center justify-between">
