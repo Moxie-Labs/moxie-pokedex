@@ -47,6 +47,8 @@ const getTypeIcon = (typeName) => {
 
 const PokemonCard = ({ pokemon }) => {
   const navigate = useNavigate();
+
+  console.log(pokemon);
   return (
     <li
       onClick={() => navigate(`/${pokemon.name}`)}
@@ -54,7 +56,11 @@ const PokemonCard = ({ pokemon }) => {
     >
       <p className="pb-[4px] font-medium text-[12px]">
         Evolves from
-        <span className="ml-1 text-rose-500">{pokemon?.details?.name}</span>
+        <span className="ml-1 text-rose-500">
+          {pokemon?.species?.evolves_from_species?.name
+            ? pokemon?.species?.evolves_from_species?.name
+            : 'N/A'}
+        </span>
       </p>
       <div className="relative mt-0 flex justify-between border-b-[1px] border-slate-700 pb-[4px]">
         <h3 className="text-[36px] ml-[0px] capitalize font-semibold">

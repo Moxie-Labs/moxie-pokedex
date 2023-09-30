@@ -5,14 +5,16 @@ const MovesTable = ({ pokemonData }) => {
     <section className="mt-10">
       <h2 className="text-slate-100 text-[16px] font-medium">Moves</h2>
       <table className="mt-4 w-[100%]" style={{ borderCollapse: 'collapse' }}>
-        <tbody>
-          <thead className="grid grid-cols-5 text-left px-6 py-3 text-slate-300 text-[14px] bg-slate-700">
+        <thead>
+          <tr className="grid grid-cols-5 text-left px-6 py-3 text-slate-300 text-[14px] bg-slate-700">
             <th>SI</th>
             <th>Name</th>
             <th>Level Learn</th>
             <th>Learn Method</th>
             <th>Version Group Name</th>
-          </thead>
+          </tr>
+        </thead>
+        <tbody>
           {pokemonData?.data.moves.slice(0, 15).map((move, index) => (
             <tr
               key={index}
