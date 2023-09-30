@@ -16,10 +16,13 @@ const generateSprite = (alt, src, label) => (
   <Sprite alt={alt} src={src} label={label} />
 );
 
-const Bagde = ({ icon, score, label }) => {
+const Bagde = ({ icon, score, label, vibe }) => {
   return (
     <div className="border-slate-700 relative border-[1px] rounded-md p-4 text-slate-100">
-      <Icon icon={icon} className="text-[24px]  absolute right-4 top-4" />
+      <Icon
+        icon={icon}
+        className={`text-[32px] absolute right-4 top-4 ${vibe}`}
+      />
       <p className="text-[32px]">{score}</p>
       <p className="text-[14px] text-slate-300">{label}</p>
     </div>
@@ -88,7 +91,7 @@ const Pokemon = () => {
             <h1 className="text-[46px] font-black bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-yellow-100 capitalize">
               {pokemonData?.data.name}
             </h1>
-            <p className="mt-2 text-[14px]">
+            <p className="mt-2 mb-12 text-[14px]">
               {pokemonData?.species?.flavor_text_entries?.[0]?.flavor_text ||
                 ''}
             </p>
@@ -104,32 +107,31 @@ const Pokemon = () => {
         />
       )}
       <section className="mt-10">
-        <h2 className="text-slate-100 text-[16px] font-medium">Sprites</h2>
+        <h2 className="text-slate-100 text-[16px] font-medium">Species Stat</h2>
         <div className="mt-4 grid grid-cols-4 gap-4 w-[100%] mx-auto">
           <Bagde
-            icon={'healthicons:happy'}
+            icon={'system-uicons:face-happy'}
             label="Base happiness"
-            score={120}
+            score={pokemonData?.species?.base_happiness}
+            vibe={'text-yellow-500'}
           />
           <Bagde
-            icon={'healthicons:happy'}
-            label="Base happiness"
-            score={120}
+            icon={'ic:baseline-block'}
+            label="Capture rate"
+            score={pokemonData?.species?.capture_rate}
+            vibe={'text-rose-500'}
           />
           <Bagde
-            icon={'healthicons:happy'}
-            label="Base happiness"
-            score={120}
+            icon={'ph:gender-intersex'}
+            label="Gender rate"
+            score={pokemonData?.species?.gender_rate}
+            vibe={'text-pink-500'}
           />
           <Bagde
-            icon={'healthicons:happy'}
-            label="Base happiness"
-            score={120}
-          />
-          <Bagde
-            icon={'healthicons:happy'}
-            label="Base happiness"
-            score={120}
+            icon={'ph:egg-crack-light'}
+            label="Hatch counter"
+            score={pokemonData?.species?.hatch_counter}
+            vibe={'text-lime-500'}
           />
         </div>
       </section>
@@ -173,6 +175,52 @@ const Pokemon = () => {
             'Official Artwork Front Shiny'
           )}
         </div>
+      </section>
+
+      <section className="mt-10">
+        <h2 className="text-slate-100 text-[16px] font-medium">Moves</h2>
+        <table className="mt-4 w-[100%]" style={{ borderCollapse: 'collapse' }}>
+          <tbody>
+            <thead className="grid grid-cols-5 text-left px-6 py-3 text-slate-300 text-[14px] bg-slate-700">
+              <th>SI</th>
+              <th>Name</th>
+              <th>Level Learn</th>
+              <th>Learn Method</th>
+              <th>Version Group Name</th>
+            </thead>
+            {pokemonData?.data.moves.slice(0, 15).map((move, index) => (
+              <tr
+                key={index}
+                className={`${
+                  index > 0 &&
+                  index < pokemonData?.data.moves.length - 1 &&
+                  'border-b-[1px] border-slate-800'
+                } grid grid-cols-5 border-b-[1px] capitalize border-slate-800 px-6 py-4 text-slate-300 text-[14px]`}
+              >
+                <td>{index + 1}</td>
+                <td>{move.move.name}</td>
+                <td>{move.version_group_details[0].level_learned_at}</td>
+                <td>{move.version_group_details[0].move_learn_method.name}</td>
+                <td>{move.version_group_details[0].version_group.name}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+      <section className="border-[1px] flex justify-between items-start border-slate-800 px-6 py-6 rounded-lg mt-12">
+        <div>
+          <h6 className="text-slate-300 mb-2 text-[18px] font-bold">
+            Thanks for Exploring Pokémon with Us!
+          </h6>
+          <p className="text-slate-400 mb-2 lg:w-[80%] text-[14px]">
+            Regrettably, we can't extend this further due to time constraints.
+            Feel free to continue your Pokémon exploration with thousands more
+            to discover
+          </p>
+        </div>
+        <button className="bg-rose-700 text-slate-100 px-4 py-2 rounded-lg">
+          Explore Other Pokemons
+        </button>
       </section>
     </MainLayout>
   );
