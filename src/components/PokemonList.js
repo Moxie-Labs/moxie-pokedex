@@ -1,38 +1,32 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
+import usePokemonFetch from '../usePokemonFetch';
 import { Link } from 'react-router-dom';
 
 const PokemonList = () => {
-  const [pokemons, setPokemons] = useState([]);
+  const { data, loading, error } = usePokemonFetch('https://pokeapi.co/api/v2/pokemon?limit=12');
 
-  useEffect(() => {
-    const fetchPokemons = async () => {
-      try {
-        const response = await axios.get('https://pokeapi.co/api/v2/pokemon?limit=12');
-        setPokemons(response.data.results);
-      } catch (error) {
-        console.error('Error fetching pokemons:', error);
-      }
-    };
+  const pokemons = data ? data.results : [];
 
-    fetchPokemons();
-  }, []);
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
-    <div className="pokemon-list-container">
-      <h1>Pokémon List</h1>
-      <ul className="pokemon-list">
-        {pokemons.map(pokemon => (
-          <li key={pokemon.name} className="pokemon-item">
-            <Link to={`/pokemon/${pokemon.name}`}>
-              <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.url.split('/')[pokemon.url.split('/').length - 2]}.png`} alt={pokemon.name} />
-              <h3>{pokemon.name}</h3>
-              <button>Details</button>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      <h1 className='page-title'>Pokémon List</h1>
+      <div className="pokemon-list-container">
+        <ul className="pokemon-list">
+          {pokemons.map(pokemon => (
+            <li key={pokemon.name} className="pokemon-item">
+              <Link to={`/pokemon/${pokemon.name}`}>
+                <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.url.split('/')[pokemon.url.split('/').length - 2]}.png`} alt={pokemon.name} />
+                <h3>{pokemon.name}</h3>
+                <button>Details</button>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </>
   );
 };
 

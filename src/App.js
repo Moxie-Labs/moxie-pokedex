@@ -19,6 +19,7 @@ function App() {
 
   return (
     <Router>
+      <div className='App'>
       <div className='toggle-container'>
       <button onClick={toggleTheme}>
         {theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
@@ -28,6 +29,7 @@ function App() {
         <Route path="/" element={<PokemonList />} />
         <Route path="/pokemon/:name" element={<PokemonDetail />} />
       </Routes>
+      </div>
     </Router>
   );
 }
