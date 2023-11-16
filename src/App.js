@@ -1,7 +1,15 @@
+import { useEffect } from 'react';
+import { useData } from './contexts/Data';
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const { pokemons, fetchPokemons } = useData();
+
+  useEffect(() => {
+    fetchPokemons();
+  }, [])
+
   return (
     <div className="App">
       <header className="App-header">
