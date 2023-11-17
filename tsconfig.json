@@ -1,0 +1,55 @@
+{
+	"compilerOptions": {
+		"target": "esnext",
+		"module": "esnext",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"jsx": "react-jsx",
+		"allowJs": true,
+		"experimentalDecorators": true,
+		// Interop constraints
+		"isolatedModules": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"allowSyntheticDefaultImports": true,
+		// END Interop constraints
+		// Type checking
+		"strict": true,
+		"noImplicitOverride": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedIndexedAccess": true,
+		"exactOptionalPropertyTypes": true,
+		// END Type checking
+		// Handled in eslint: disable them to prevent error duplication
+		"allowUnreachableCode": true, // rule name: no-unreachable
+		"allowUnusedLabels": true, // rule name: no-unused-labels
+		"noUnusedLocals": false, // rule name: no-unused-vars, @typescript-eslint/no-unused-vars
+		"noUnusedParameters": false, // rule name: no-unused-vars, @typescript-eslint/no-unused-vars: in `args` option
+		// END Handled in eslint
+		"skipLibCheck": true,
+		"noEmit": true,
+		"incremental": true,
+		"lib": [
+			"dom",
+			"dom.iterable",
+			"es5",
+			"es6",
+			"es2015",
+			"es2016",
+			"es2017",
+			"es2018",
+			"es2019",
+			"es2020",
+			"esnext"
+		],
+		"baseUrl": "src",
+		"paths": {}
+	},
+	"include": [
+		"src/**/*"
+	],
+	"exclude": [
+		"node_modules",
+		"build"
+	]
+}

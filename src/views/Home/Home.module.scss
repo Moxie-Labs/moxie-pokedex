@@ -1,0 +1,19 @@
+.pokemons {
+	display: flex;
+	gap: 8px;
+	margin: 12px;
+
+	.pokemonCard {
+		padding: 12px;
+		background-color: #dedede;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		border-radius: 12px;
+
+		.pokemonName {
+			text-transform: capitalize;
+			text-decoration: none;
+		}
+	}
+}
