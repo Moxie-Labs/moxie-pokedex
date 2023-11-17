@@ -1,4 +1,5 @@
 import { useData } from "../../../contexts/Data";
+import { getPokemonIdFromURL } from "../../../utils";
 
 function PokemonList() {
   const {
@@ -8,6 +9,10 @@ function PokemonList() {
 
   if (loading) {
     return <div>Loading ...</div>;
+  }
+
+  if (!results || !results.length) {
+    return <div>No data</div>;
   }
 
   return (
@@ -21,12 +26,12 @@ function PokemonList() {
       </thead>
 
       <tbody>
-        {results.map(({ name, url }, id) => (
+        {results.map(({ name, url }) => (
           <tr key={name}>
-            <td>{id}</td>
+            <td>{getPokemonIdFromURL(url)}</td>
             <td>{name}</td>
             <td>
-              <a href="#">Detail</a>
+              <a href={"/pokemons/" + name}>Detail</a>
             </td>
           </tr>
         ))}
