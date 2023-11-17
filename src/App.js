@@ -1,20 +1,24 @@
 import { useEffect } from 'react';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { PokemonList, PokemonDetail } from "./pages/Pokemon";
 import { useData } from './contexts/Data';
-import logo from './logo.svg';
 import './App.css';
 
-import PokemonList from './pages/Pokemon/List';
-
 function App() {
-  const { pokemons, fetchPokemons } = useData();
+  const { fetchPokemons } = useData();
 
   useEffect(() => {
     fetchPokemons();
-  }, [])
+  }, []);
 
   return (
     <div className="App">
-      <PokemonList />
+      <RouterProvider
+        router={createBrowserRouter([
+          { path: "/pokemons/:name", element: <PokemonDetail /> },
+          { path: "/", element: <PokemonList /> },
+        ])}
+      />
     </div>
   );
 }

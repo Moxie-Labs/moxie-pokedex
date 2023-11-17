@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useData } from "../../../contexts/Data";
 import { getPokemonIdFromURL } from "../../../utils";
 
@@ -31,7 +32,7 @@ function PokemonList() {
             <td>{getPokemonIdFromURL(url)}</td>
             <td>{name}</td>
             <td>
-              <a href={"/pokemons/" + name}>Detail</a>
+              <Link to={"/pokemons/" + name}>Detail</Link>
             </td>
           </tr>
         ))}
