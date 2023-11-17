@@ -9,7 +9,7 @@ const DataProvider = ({ children }) => {
 
   /**
    * Fetches the list of pokemons
-   * @param {number} pageNo - Page number to read
+   * @param {number} pageNo - Page number to read, starts from 0
    * @param {number} limit - Limit count of pokemons to read
    */
   const fetchPokemons = async (pageNo = 0, limit = 20) => {
@@ -40,7 +40,7 @@ const DataProvider = ({ children }) => {
    */
   const fetchPokemon = async (name) => {
     if (pokemonDetails[name]) {
-      return pokemonDetails[name];
+      return;
     }
 
     setLoading(true);
