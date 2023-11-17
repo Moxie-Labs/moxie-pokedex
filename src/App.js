@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { PokemonList, PokemonDetail } from "./pages/Pokemon";
+
 import { useData } from './contexts/Data';
 import './App.css';
 
@@ -8,7 +9,7 @@ function App() {
   const { fetchPokemons } = useData();
 
   useEffect(() => {
-    fetchPokemons();
+    fetchPokemons(3, 12);
   }, []);
 
   return (

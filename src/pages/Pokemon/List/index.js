@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useData } from "../../../contexts/Data";
 import { getPokemonIdFromURL } from "../../../utils";
 
+import style from "./list.module.css"
+
 function PokemonList() {
   const {
     pokemons: { results },
@@ -17,27 +19,30 @@ function PokemonList() {
   }
 
   return (
-    <table>
-      <thead>
-        <tr>
-          <td>ID</td>
-          <td>Name</td>
-          <td></td>
-        </tr>
-      </thead>
-
-      <tbody>
-        {results.map(({ name, url }) => (
-          <tr key={name}>
-            <td>{getPokemonIdFromURL(url)}</td>
-            <td>{name}</td>
-            <td>
-              <Link to={"/pokemons/" + name}>Detail</Link>
-            </td>
+    <main>
+      <h1 className="text-center">Pokemons</h1>
+      <table className={style.pokemonsList}>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th></th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+
+        <tbody>
+          {results.map(({ name, url }) => (
+            <tr key={name}>
+              <td>{getPokemonIdFromURL(url)}</td>
+              <td>{name}</td>
+              <td>
+                <Link to={"/pokemons/" + name}>Detail</Link>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </main>
   );
 }
 
