@@ -1,0 +1,18 @@
+.pokemonContainer {
+	margin: 12px;
+	background: #dfdfdf;
+	padding: 12px;
+	border-radius: 12px;
+
+	.pokemonName {
+		text-transform: capitalize;
+	}
+
+	.pokemonStat {
+		margin-left: 12px;
+	}
+}
+
+.goBackBtn {
+	margin: 12px;
+}
