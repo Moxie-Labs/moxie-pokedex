@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import PokemonList from './components/PokemonList';
+import PokemonDetail from './components/pokemonDetail';
 import './App.css';
 
 function App() {
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    if (theme === 'light') {
+      setTheme('dark');
+      document.body.setAttribute('data-theme', 'dark');
+    } else {
+      setTheme('light');
+      document.body.removeAttribute('data-theme');
+    }
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className='App'>
+      <div className='toggle-container'>
+      <button onClick={toggleTheme}>
+        {theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
+      </button>
+      </div>
+      <Routes>
+        <Route path="/" element={<PokemonList />} />
+        <Route path="/pokemon/:name" element={<PokemonDetail />} />
+      </Routes>
+      </div>
+    </Router>
   );
 }
 
